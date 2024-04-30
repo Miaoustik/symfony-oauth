@@ -22,19 +22,21 @@ security:
             custom_authenticators:
                 - App\Security\AppAuthenticator
                 - App\Security\GithubAuthenticator
+                - App\Security\GoogleAuthenticator
 
             entry_point: App\Security\AppAuthenticator
 
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_login
 
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800
                 path: /
                 always_remember_me: true
+            custom_authenticator: App\Security\GoogleAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
